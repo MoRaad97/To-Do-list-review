@@ -5,10 +5,6 @@
   padding: 0;
 }
 
-.hidden {
-  display: none !important;
-}
-
 body {
   background-color: rgb(238, 238, 238);
   height: 80vh;
@@ -92,10 +88,6 @@ i {
 input[type="checkbox"] {
   width: 16px;
   height: 16px;
-}
-
-.completed {
-  color: red;
 }
 
 .tasks-container {

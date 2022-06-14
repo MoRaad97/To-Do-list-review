@@ -6,7 +6,7 @@ import {
 
 const input = document.querySelector('.ph');
 const submit = document.querySelector('.enter');
-const taskEvent = document.body.querySelector('.tasks-list');
+const taskEvent = document.querySelector('.tasks-list');
 
 // get task from local storage on load
 getTaskFromStore();
@@ -34,10 +34,13 @@ taskEvent.addEventListener('click', (e) => {
     // delete from local storage
     deleteTaskWith(e.target.parentElement.getAttribute('task-id'));
   }
-});
-
+// check state change 
+  if (e.target.hasAttribute('checked')) {
+    e.target.removeAttribute('checked');
+  } else if (e.target.classList.contains('check-input')) {
+    e.target.setAttribute('checked', '');
+  }
 // edit function
-taskEvent.addEventListener('click', (e) => {
   if (e.target.classList.contains('edit')) {
     e.target.addEventListener('blur', (e) => {
       if (e.target.value === '') {
@@ -47,14 +50,6 @@ taskEvent.addEventListener('click', (e) => {
         editTask(e.target.parentElement.parentElement.getAttribute('task-id'), e.target.value);
       }
     });
-  }
-});
-
-taskEvent.addEventListener('click', (e) => {
-  if (e.target.hasAttribute('checked')) {
-    e.target.removeAttribute('checked');
-  } else if (e.target.classList.contains('check-input')) {
-    e.target.setAttribute('checked', '');
   }
 });
 
